@@ -1,4 +1,4 @@
-package com.example.booking_service;
+package com.mtbs.booking_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

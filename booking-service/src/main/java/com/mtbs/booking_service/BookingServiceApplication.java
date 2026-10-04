@@ -1,5 +1,4 @@
-package com.example.booking_service;
-
+package com.mtbs.booking_service;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,4 +10,3 @@ public class BookingServiceApplication {
 	}
 
 }
-z
