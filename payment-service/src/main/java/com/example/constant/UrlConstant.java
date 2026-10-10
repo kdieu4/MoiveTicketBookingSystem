@@ -6,4 +6,10 @@ public final class UrlConstant {
 
         public static final String BY_ID = PREFIX + "/{paymentId}";
     }
+
+    public static final class Momo {
+        public static final String PREFIX = "/momo";
+
+        public static final String CREATE = PREFIX + "/create";
+    }
 }
