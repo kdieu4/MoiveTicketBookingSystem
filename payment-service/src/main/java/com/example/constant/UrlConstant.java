@@ -12,4 +12,6 @@ public final class UrlConstant {
 
         public static final String CREATE = PREFIX + "/create";
     }
+
+    public static final String VIETQR_PAYMENT = "/vietqr";
 }

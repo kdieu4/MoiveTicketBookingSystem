@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     public static final String BOOKING_EXCHANGE = "booking.exchange";
+    public static final String PAYMENT_EXCHANGE = "payment.exchange";
     public static final String BOOKING_CREATED_QUEUE = "booking.created.queue";
     public static final String BOOKING_CREATED_ROUTING_KEY = "booking.created";
     public static final String PAYMENT_COMPLETED_ROUTING_KEY = "payment.completed";
