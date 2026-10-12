@@ -6,6 +6,7 @@ package com.mtbs.movie_service.controller;
 
 import com.mtbs.movie_service.domain.dto.request.ShowtimeRequest;
 import com.mtbs.movie_service.domain.dto.response.ShowtimeResponse;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.mtbs.movie_service.service.ShowtimeService;
 
 import jakarta.validation.Valid;
@@ -23,6 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/showtimes")
+@CrossOrigin(origins = "http://localhost:3001")
 @RequiredArgsConstructor
 public class ShowtimeController {
 
