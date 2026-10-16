@@ -1,11 +1,16 @@
 package com.mtbs.booking_service.domain.dto.response;
 
+import java.math.BigDecimal;
+
 public class SeatResponse {
 
     private Long seatId;
     private Long showtimeSeatId;
+    private String seatRow;
+    private Short seatNumber;
+    private String seatType;
     private String status;
-    private Double price;
+    private BigDecimal price;
 
     public SeatResponse() {
     }
@@ -26,6 +31,30 @@ public class SeatResponse {
         this.showtimeSeatId = showtimeSeatId;
     }
 
+    public String getSeatRow() {
+        return seatRow;
+    }
+
+    public void setSeatRow(String seatRow) {
+        this.seatRow = seatRow;
+    }
+
+    public Short getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(Short seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public String getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(String seatType) {
+        this.seatType = seatType;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -34,11 +63,11 @@ public class SeatResponse {
         this.status = status;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

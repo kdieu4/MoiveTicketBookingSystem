@@ -1,2 +1,4 @@
 booking-service/bin/
 .vscode/
+.env
+booking-service/.env

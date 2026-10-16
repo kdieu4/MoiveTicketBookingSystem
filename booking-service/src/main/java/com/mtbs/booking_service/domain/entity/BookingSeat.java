@@ -2,19 +2,30 @@ package com.mtbs.booking_service.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+
 @Entity
 @Table(name = "booking_details")
 public class BookingSeat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_detail_id")
     private Long bookingDetailId;
 
+    @Column(name = "booking_id", nullable = false)
     private Long bookingId;
 
+    @Column(name = "showtime_seat_id", nullable = false)
     private Long showtimeSeatId;
 
-    private double price;
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
+
+    @Column(name = "created_at", nullable = false,
+            insertable = false, updatable = false)
+    private OffsetDateTime createdAt;
 
     public BookingSeat() {
     }
@@ -43,11 +54,15 @@ public class BookingSeat {
         this.showtimeSeatId = showtimeSeatId;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
     }
 }

@@ -1,5 +1,10 @@
 package com.mtbs.booking_service.domain.dto.response;
 
+import com.mtbs.booking_service.domain.enums.BookingStatus;
+import com.mtbs.booking_service.domain.enums.PaymentMethod;
+
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 public class BookingResponse {
@@ -10,11 +15,21 @@ public class BookingResponse {
 
     private Long showtimeId;
 
-    private List<Long> seatIds;
+    private String bookingCode;
 
-    private double amount;
+    private BigDecimal totalAmount;
 
-    private String status;
+    private BookingStatus status;
+
+    private PaymentMethod paymentMethod;
+
+    private OffsetDateTime bookingTime;
+
+    private OffsetDateTime createdAt;
+
+    private OffsetDateTime updatedAt;
+
+    private List<Long> showtimeSeatIds;
 
     public BookingResponse() {
     }
@@ -43,27 +58,67 @@ public class BookingResponse {
         this.showtimeId = showtimeId;
     }
 
-    public List<Long> getSeatIds() {
-        return seatIds;
+    public String getBookingCode() {
+        return bookingCode;
     }
 
-    public void setSeatIds(List<Long> seatIds) {
-        this.seatIds = seatIds;
+    public void setBookingCode(String bookingCode) {
+        this.bookingCode = bookingCode;
     }
 
-    public double getAmount() {
-        return amount;
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
-    public String getStatus() {
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public OffsetDateTime getBookingTime() {
+        return bookingTime;
+    }
+
+    public void setBookingTime(OffsetDateTime bookingTime) {
+        this.bookingTime = bookingTime;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public List<Long> getShowtimeSeatIds() {
+        return showtimeSeatIds;
+    }
+
+    public void setShowtimeSeatIds(List<Long> showtimeSeatIds) {
+        this.showtimeSeatIds = showtimeSeatIds;
     }
 }

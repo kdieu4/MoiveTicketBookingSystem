@@ -1,5 +1,8 @@
 package com.mtbs.booking_service.messaging;
 
+import com.mtbs.booking_service.domain.enums.BookingStatus;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public class BookingCreatedEvent {
@@ -7,9 +10,9 @@ public class BookingCreatedEvent {
     private Long bookingId;
     private Long userId;
     private Long showtimeId;
-    private List<Long> seatIds;
-    private double amount;
-    private String status;
+    private List<Long> showtimeSeatIds;
+    private BigDecimal totalAmount;
+    private BookingStatus status;
 
     public BookingCreatedEvent() {
     }
@@ -38,27 +41,27 @@ public class BookingCreatedEvent {
         this.showtimeId = showtimeId;
     }
 
-    public List<Long> getSeatIds() {
-        return seatIds;
+    public List<Long> getShowtimeSeatIds() {
+        return showtimeSeatIds;
     }
 
-    public void setSeatIds(List<Long> seatIds) {
-        this.seatIds = seatIds;
+    public void setShowtimeSeatIds(List<Long> showtimeSeatIds) {
+        this.showtimeSeatIds = showtimeSeatIds;
     }
 
-    public double getAmount() {
-        return amount;
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
-    public String getStatus() {
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
     }
 }

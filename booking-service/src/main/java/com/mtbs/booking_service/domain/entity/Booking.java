@@ -1,10 +1,13 @@
 package com.mtbs.booking_service.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.mtbs.booking_service.domain.enums.BookingStatus;
+import com.mtbs.booking_service.domain.enums.PaymentMethod;
+import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "bookings")
@@ -12,15 +15,40 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_id")
     private Long bookingId;
 
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
+    @Column(name = "showtime_id", nullable = false)
     private Long showtimeId;
 
-    private double amount;
+    @Column(name = "booking_code", nullable = false)
+    private String bookingCode;
 
-    private String status;
+    @Column(name = "total_amount", nullable = false, precision = 10, scale = 2)
+    private BigDecimal totalAmount;
+
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "status", columnDefinition = "booking_status_enum")
+    private BookingStatus status;
+
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "payment_method", columnDefinition = "payment_method_enum")
+    private PaymentMethod paymentMethod;
+
+    @Column(name = "booking_time")
+    private OffsetDateTime bookingTime;
+
+    @Column(name = "created_at", nullable = false,
+            insertable = false, updatable = false)
+    private OffsetDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false, insertable = false)
+    private OffsetDateTime updatedAt;
 
     public Booking() {
     }
@@ -49,19 +77,56 @@ public class Booking {
         this.showtimeId = showtimeId;
     }
 
-    public double getAmount() {
-        return amount;
+    public String getBookingCode() {
+        return bookingCode;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setBookingCode(String bookingCode) {
+        this.bookingCode = bookingCode;
     }
 
-    public String getStatus() {
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public OffsetDateTime getBookingTime() {
+        return bookingTime;
+    }
+
+    public void setBookingTime(OffsetDateTime bookingTime) {
+        this.bookingTime = bookingTime;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = OffsetDateTime.now();
     }
 }
